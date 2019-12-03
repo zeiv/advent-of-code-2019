@@ -1,6 +1,6 @@
 # Advent of Code 2019
 
-[![Build Status](https://travis-ci.org/zeiv/advent-of-code-2019.svg?branch=master)](https://travis-ci.org/zeiv/advent-of-code-2019)
+[![Build Status](https://travis-ci.org/zeiv/advent-of-code-2019.svg?branch=master)](https://travis-ci.org/zeiv/advent-of-code-2019) ![GitHub Workflow](https://github.com/zeiv/advent-of-code-2019/workflows/Rust/badge.svg)
 
 You can steal my work, use the `puzzlehandler` package in your own code!  Add this line to your `Cargo.toml`:
 
