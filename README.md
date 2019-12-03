@@ -18,7 +18,7 @@ Then, add `"day7"` to the members list in the root-level Cargo.toml:
 
 ```toml
 member = [
-  ...,
+  "...",
   "day7"
 ]
 ```
