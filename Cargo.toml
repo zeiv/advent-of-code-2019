@@ -1,0 +1,8 @@
+[workspace]
+
+members = [
+  "puzzlehandler",
+  "exampleDay",
+  "day1",
+  "day2"
+]
