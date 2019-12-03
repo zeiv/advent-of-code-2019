@@ -1,11 +1,17 @@
 fn main() {
     let input = puzzlehandler::ints_from_csv("input.csv".to_string()).unwrap();
+    puzzlehandler::resolve( Box::new( part1(input.clone()) ) );
+    puzzlehandler::resolve( Box::new( part2(input.clone()) ) );
+}
+
+fn part1(input: Vec<i32>) -> i32 {
     let mut intcode = input.clone();
     intcode[1] = 12;
     intcode[2] = 2;
-    let result = compute_answer(intcode);
-    println!("Part 1: {:?}", result);
+    return run_intcode(intcode);
+}
 
+fn part2(input: Vec<i32>) -> i32 {
     let mut noun = 0;
     while noun < 100 {
         let mut verb = 0;
@@ -13,10 +19,9 @@ fn main() {
             let mut intcode = input.clone();
             intcode[1] = noun;
             intcode[2] = verb;
-            let result = compute_answer(intcode);
+            let result = run_intcode(intcode);
             if result == 19690720 {
-                println!("Part 2: {:?}{:?}", noun, verb);
-                return;
+                return format!("{}{}", noun, verb).parse::<i32>().unwrap();
             }
             verb += 1;
         }
@@ -26,7 +31,7 @@ fn main() {
     panic!();
 }
 
-fn compute_answer(input: Vec<i32>) -> i32 {
+fn run_intcode(input: Vec<i32>) -> i32 {
     let mut intcode = input.clone();
     let mut i = 0;
     while i < input.len() {
@@ -54,7 +59,7 @@ mod tests {
     #[test]
     fn compute_answer_works() {
         let input = vec![1, 9, 10, 3, 2, 3, 11, 0, 99, 30, 40, 50];
-        let result = super::compute_answer(input);
+        let result = super::run_intcode(input);
         assert_eq!(result, 3500);
     }
 }

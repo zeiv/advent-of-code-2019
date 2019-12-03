@@ -2,13 +2,11 @@ use puzzlehandler;
 
 fn main() {
     let input = puzzlehandler::ints_from_csv("input.csv".to_string()).unwrap();
-    let result = compute_answer(input.clone());
-    println!("Part 1: {:?}", result);
-    let result2 = compute_answer_part2(input);
-    println!("Part 2: {:?}", result2);
+    puzzlehandler::resolve(Box::new(part1(input.clone())));
+    puzzlehandler::resolve(Box::new(part2(input.clone())));
 }
 
-fn compute_answer(modules: Vec<i32>) -> i32 {
+fn part1(modules: Vec<i32>) -> i32 {
     let mut result: i32 = 0;
     for module in modules {
         result += (module / 3) - 2;
@@ -16,7 +14,7 @@ fn compute_answer(modules: Vec<i32>) -> i32 {
     return result;
 }
 
-fn compute_answer_part2(modules: Vec<i32>) -> i32 {
+fn part2(modules: Vec<i32>) -> i32 {
     let mut result: i32 = 0;
     for module in modules {
         let mut fuel_for_module = (module / 3) - 2;
@@ -39,14 +37,14 @@ mod tests {
     #[test]
     fn compute_answer_works() {
         let modules = vec![12, 14, 1969, 100756];
-        let result = super::compute_answer(modules);
+        let result = super::part1(modules);
         assert_eq!(result, 34241);
     }
 
     #[test]
     fn compute_answer_part2_works() {
         let modules = vec![12, 14, 1969, 100756];
-        let result = super::compute_answer_part2(modules);
+        let result = super::part2(modules);
         assert_eq!(result, 51316);
     }
 }
