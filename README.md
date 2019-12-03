@@ -14,6 +14,15 @@ To add a new package for a new day, simply use `cargo new`, since Git is already
 cargo new day7
 ```
 
+Then, add `"day7"` to the members list in the root-level Cargo.toml:
+
+```toml
+member = [
+  ...,
+  "day7"
+]
+```
+
 ## License
 
 Copyright Xavier Bick 2019.
