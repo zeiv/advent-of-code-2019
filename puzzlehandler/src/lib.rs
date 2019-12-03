@@ -4,7 +4,7 @@ use std::fmt::Debug;
 use std::sync::atomic::{AtomicUsize, Ordering};
 use std::path::Path;
 
-// This function takes a CSV of one int per line or a single-line CSV of all-int columns and
+// ints_from_csv takes a CSV of one int per line or a single-line CSV of all-int columns and
 // creates a Vector of int32.
 pub fn ints_from_csv(path: String) -> Result<Vec<i32>, Box<dyn Error>> {
     let mut results: Vec<i32> = vec![];
@@ -22,6 +22,8 @@ pub fn ints_from_csv(path: String) -> Result<Vec<i32>, Box<dyn Error>> {
 
 static RESULT_COUNTER: AtomicUsize = AtomicUsize::new(1);
 
+// resolve simply takes any Debug-formattable type and prints it out, prefaced
+// by an incrementing result title.
 pub fn resolve(result: Box<dyn Debug>) {
     println!("Result {}: {:?}", RESULT_COUNTER.fetch_add(1, Ordering::SeqCst), result);
 }
