@@ -51,6 +51,13 @@ dependencies = [
 ]
 
 [[package]]
+name = "day3"
+version = "0.1.0"
+dependencies = [
+ "puzzlehandler 0.1.0",
+]
+
+[[package]]
 name = "example_day"
 version = "0.1.0"
 dependencies = [

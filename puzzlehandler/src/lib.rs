@@ -20,6 +20,25 @@ pub fn ints_from_csv(path: String) -> Result<Vec<i32>, Box<dyn Error>> {
    return Ok(results);
 }
 
+
+// string_matrix_from_csv takes a CSV and returns a two-dimenatonal vector of string vectors.
+pub fn string_matrix_from_csv(path: String) -> Result<Vec<Vec<String>>, Box<dyn Error>> {
+    let mut results: Vec<Vec<String>> = vec![];
+    let mut reader = csv::ReaderBuilder::new().has_headers(false).flexible(true).from_path(Path::new(&path))?;
+    let records = reader.records();
+    for record in records {
+        for row in record.iter() {
+            let mut row_results: Vec<String> = vec![];
+            for field in row.iter() {
+                row_results.push(field.to_string());
+            }
+            results.push(row_results);
+        }
+    }
+   return Ok(results);
+}
+
+
 static RESULT_COUNTER: AtomicUsize = AtomicUsize::new(1);
 
 // resolve simply takes any Debug-formattable type and prints it out, prefaced
@@ -36,5 +55,11 @@ mod tests {
         assert_eq!(ints, vec![0, 1, 2, 3]);
         ints = crate::ints_from_csv("./test_support/test_int_csv2.csv".to_string()).unwrap();
         assert_eq!(ints, vec![0, 1, 2, 3]);
+    }
+
+    #[test]
+    fn string_matrix_from_csv_works() {
+        let matrix = crate::string_matrix_from_csv("./test_support/test_string_csv.csv".to_string()).unwrap();
+        assert_eq!(matrix, vec![vec!["a", "b", "c"], vec!["d", "e", "f"]]);
     }
 }

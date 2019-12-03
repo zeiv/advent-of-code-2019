@@ -4,5 +4,6 @@ members = [
   "puzzlehandler",
   "example_day",
   "day1",
-  "day2"
+  "day2",
+  "day3"
 ]
