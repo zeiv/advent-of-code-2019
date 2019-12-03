@@ -2,7 +2,7 @@
 
 members = [
   "puzzlehandler",
-  "exampleDay",
+  "example_day",
   "day1",
   "day2"
 ]
