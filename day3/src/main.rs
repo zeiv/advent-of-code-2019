@@ -87,7 +87,7 @@ fn intersections_and_total_steps_from_paths(wire1_path: Vec<Coord>, wire2_path: 
     // The general strategy is to loop over *line segments* in wire1 and then check if any
     // line segments in wire2 intersect.
     for (i, coord) in wire1_path.iter().enumerate() {
-        // Ensure 2 is in range of wire1_path and ignore origin
+        // Ensure i is in range of wire1_path and ignore origin
         if i < wire1_path.len() - 1 && i != 0 {
             let x = coord.x;
             let y = coord.y;
